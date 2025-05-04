@@ -2,11 +2,11 @@ import { fetchWeatherApi } from 'openmeteo';
 import { City } from '../interfaces/city.interface';
 import { weatherConditions } from '../interfaces/weather.interface';
 
-export const getSessionCityWeather = () => {
-  return sessionStorage.getItem(import.meta.env.VITE_SAVED_CITY_WEATHER) || '';
+export const getLocalCityWeather = () => {
+  return localStorage.getItem(import.meta.env.VITE_SAVED_CITY_WEATHER) || '';
 };
-export const setSessionCityWeather = (value: string) => {
-  return sessionStorage.setItem(import.meta.env.VITE_SAVED_CITY_WEATHER, value);
+export const setLocalCityWeather = (value: string) => {
+  return localStorage.setItem(import.meta.env.VITE_SAVED_CITY_WEATHER, value);
 };
 
 export const weatherCodeToCondition = (weatherCode: number): string => {

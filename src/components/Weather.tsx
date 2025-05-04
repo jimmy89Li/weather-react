@@ -3,14 +3,14 @@ import { useQuery } from '@tanstack/react-query';
 import { getCityGeo } from '../services/city';
 import {
   getCityWeather,
-  getSessionCityWeather,
-  setSessionCityWeather,
+  getLocalCityWeather,
+  setLocalCityWeather,
 } from '../services/weather';
 import {
-  getSessionCity,
-  setSessionsCity,
-  setSessionCityGeo,
-  getSessionCityGeo,
+  getLocalCity,
+  setLocalCity,
+  setLocalCityGeo,
+  getLocalCityGeo,
 } from '../services/city';
 import { CityContext, CityWeatherContext } from '../services/context';
 
@@ -19,11 +19,11 @@ export const Weather = ({
 }: {
   children: JSX.Element | JSX.Element[];
 }) => {
-  const [contextCity, setContextCity] = useState(getSessionCity());
+  const [contextCity, setContextCity] = useState(getLocalCity());
   const [contextCityWeather, setContextCityWeather] = useState(
-    getSessionCityWeather()
+    getLocalCityWeather()
   );
-  const contextCityGeo = getSessionCityGeo();
+  const contextCityGeo = getLocalCityGeo();
 
   const { data: cityData } = useQuery({
     staleTime: Infinity, // Infinite caching.
@@ -37,9 +37,9 @@ export const Weather = ({
     if (!cityData || Object.keys(cityData).length === 0) return;
     if (cityData.name) {
       setContextCity(cityData.name);
-      setSessionsCity(cityData.name);
+      setLocalCity(cityData.name);
     }
-    setSessionCityGeo(JSON.stringify(cityData));
+    setLocalCityGeo(JSON.stringify(cityData));
   }, [cityData]);
 
   const { data: cityWeather } = useQuery({
@@ -53,7 +53,7 @@ export const Weather = ({
   useEffect(() => {
     if (!cityWeather || Object.keys(cityWeather).length === 0) return;
     setContextCityWeather(JSON.stringify(cityWeather));
-    setSessionCityWeather(JSON.stringify(cityWeather));
+    setLocalCityWeather(JSON.stringify(cityWeather));
   }, [cityWeather]);
 
   return (

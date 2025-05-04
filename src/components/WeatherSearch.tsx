@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from './Button';
 import { Input } from './Input';
-import { setSessionsCity } from '../services/city';
+import { setLocalCity } from '../services/city';
 import { useCityContext } from '../services/context';
 
 export const WeatherSearch = () => {
@@ -17,14 +17,14 @@ export const WeatherSearch = () => {
         onKeyDown={(k) => {
           if (k.key === 'Enter') {
             setContextCity(inputCity);
-            setSessionsCity(inputCity);
+            setLocalCity(inputCity);
           }
         }}
       />
       <Button
         onClick={() => {
           setContextCity(inputCity);
-          setSessionsCity(inputCity);
+          setLocalCity(inputCity);
         }}
       >
         Search

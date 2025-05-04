@@ -1,18 +1,18 @@
 import { City } from '../interfaces/city.interface';
 
-export const getSessionCity = () => {
-  return sessionStorage.getItem(import.meta.env.VITE_SAVED_CITY) || '';
+export const getLocalCity = () => {
+  return localStorage.getItem(import.meta.env.VITE_SAVED_CITY) || '';
 };
 
-export const setSessionsCity = (value: string) => {
-  return sessionStorage.setItem(import.meta.env.VITE_SAVED_CITY, value);
+export const setLocalCity = (value: string) => {
+  return localStorage.setItem(import.meta.env.VITE_SAVED_CITY, value);
 };
 
-export const getSessionCityGeo = () => {
-  return sessionStorage.getItem(import.meta.env.VITE_SAVED_CITY_GEO) || '';
+export const getLocalCityGeo = () => {
+  return localStorage.getItem(import.meta.env.VITE_SAVED_CITY_GEO) || '';
 };
-export const setSessionCityGeo = (value: string) => {
-  return sessionStorage.setItem(import.meta.env.VITE_SAVED_CITY_GEO, value);
+export const setLocalCityGeo = (value: string) => {
+  return localStorage.setItem(import.meta.env.VITE_SAVED_CITY_GEO, value);
 };
 
 // Get the city geolocation.
