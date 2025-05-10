@@ -45,23 +45,16 @@ export const WeatherCard = () => {
           text='Feels:'
           data={`${current.apparentTemperature} °C`}
         />
-        {daily && daily.temperature2mMin && daily.temperature2mMax && (
-          <WeatherCardCondition
-            data={`${Math.round(daily.temperature2mMin[0])}
-              / ${Math.round(daily.temperature2mMax[0])} °C`}
-            text='Min/Max:'
-          />
-        )}
-
-        <WeatherCardCondition data={current.weatherCondition} />
-
-        {current && current.time && (
-          <div>
-            {`Updated: ${new Date(current.time).toLocaleTimeString('en-US', {
-              hour12: false,
-            })}`}
-          </div>
-        )}
+        <WeatherCardCondition
+          text='Conditions:'
+          data={current.weatherCondition}
+        />
+        <WeatherCardCondition
+          text='Updated:'
+          data={new Date(current.time).toLocaleTimeString('en-US', {
+            hour12: false,
+          })}
+        />
       </div>
       <div className='w-full mt-2 p-4 text-left flex flex-col gap-2 border border-amber-50 rounded-sm'>
         {daily &&
