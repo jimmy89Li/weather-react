@@ -36,6 +36,7 @@ export const WeatherCard = () => {
         <WeatherCardTitle
           title={contextCity}
           subtitle={daily.time && ` - ${isoToDate(daily.time[0])}`}
+          className='underline'
         />
         <WeatherCardCondition
           text='Temp:'
@@ -56,7 +57,13 @@ export const WeatherCard = () => {
           })}
         />
       </div>
+
       <div className='w-full mt-2 p-4 text-left flex flex-col gap-2 border border-amber-50 rounded-sm'>
+        <WeatherCardTitle
+          title='FutureTemp'
+          subtitle=' - Min/Max'
+          className='underline'
+        />
         {daily &&
           daily.time &&
           daily.temperature2mMin &&
